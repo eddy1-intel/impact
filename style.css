@@ -109,7 +109,7 @@ nav ul li button:hover {
 /* Dropdown Menu */
 .dropdown {
     position: relative;
-    display: inline-block;
+   /* display: inline-block; */
     width: 100%;
 }
 
@@ -119,7 +119,7 @@ nav ul li button:hover {
     color: white;
     padding: 10px;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
     cursor: pointer;
     text-align: left;
     font-size: 14px;
@@ -129,19 +129,28 @@ nav ul li button:hover {
     content: "▼";
     float: right;
     margin-left: 10px;
+    background-color: rgb(17, 0, 255);
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    top: 100%;
+    left: 0;
+    background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: var(--border-radius);
-    z-index: 1;
+    border-radius: 8px;
     width: 100%;
+    z-index: 10;
+    padding: 10px;
     max-height: 200px;
     overflow-y: auto;
+}
+
+.dropdown-menu div {
+    font-size: 14px;
+    padding: 5px 0;
+    cursor: pointer;
 }
 
 .dropdown-menu label {
@@ -159,6 +168,23 @@ nav ul li button:hover {
 .dropdown-menu label:hover {
     background-color: #f0f0f0;
 }
+
+.dropdown-option {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-option input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0;
+}
+
+
 
 /* Data Table */
 .data-table {
@@ -202,6 +228,11 @@ nav ul li button:hover {
     transition: visibility 0s, opacity 0.5s ease;
 }
 
+/* Dropdown Menu Open State */
+.dropdown-menu.show {
+    display: block;
+}
+
 .popup.show {
     visibility: visible;
     opacity: 1;
@@ -229,4 +260,13 @@ nav ul li button:hover {
 
 .close-btn:hover {
     background-color: var(--primary-color);
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.radio-container label {
+    margin-right: 2px;
 }
