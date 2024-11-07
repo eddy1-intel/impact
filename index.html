@@ -29,24 +29,66 @@
         <aside class="sidebar">
             <h2>Filters</h2>
             <form>
+
+
                 <label for="fab">Process</label>
-                <input type="text" id="fab" name="fab" placeholder="Fab">
+                <div class="radio-container">
+                    <label for="option1">Fist</label>
+                    <input type="radio" id="option1" name="options" value="Option1">
+                    
+                    <label for="option2">Area</label>
+                    <input type="radio" id="option2" name="options" value="Option2">
+                </div>
 
-
-                <!-- Multi-Select Dropdown for Process -->
+                <!-- Process Dropdown (Multi-Select) -->
                 <label for="processDropdown">Process:</label>
                 <div id="processDropdownContainer" class="dropdown">
-                    <button type="button" id="processDropdownButton" onclick="toggleDropdown()">Select Processes</button>
+                    <button type="button" id="processDropdownButton" onclick="toggleDropdown('processDropdownMenu')">Select Processes</button>
                     <div id="processDropdownMenu" class="dropdown-menu">
-                     <!-- Options will be dynamically populated by JavaScript -->
+                        <!-- Options will be dynamically inserted by JavaScript -->
                     </div>
                 </div>
 
+               <!-- Single-Select Dropdown for Fab -->
+                <label for="fabDropdown">Fab:</label>
+                <div id="fabDropdownContainer" class="dropdown">
+                    <button type="button" id="fabDropdownButton" onclick="toggleDropdown('fabDropdownMenu')">Select Fab</button>
+                    <div id="fabDropdownMenu" class="dropdown-menu">
+                    <!-- Options will be dynamically populated by JavaScript -->
+                    </div>
+                </div>
+        
+
+
+                <!-- Multi-Select Dropdown for Process 
+                <label for="processDropdown">Fist:</label>
+                <div id="processDropdownContainer" class="dropdown">
+                    <button type="button" id="processDropdownButton" onclick="toggleDropdown()">Select Processes</button>
+                    <div id="processDropdownMenu" class="dropdown-menu">
+                
+                    </div>
+                </div>
+                -->
+
+                <!-- Multi-Select Dropdown for Process 
+                <label for="processDropdown">Fist:</label>
+                <div id="processDropdownContainer" class="dropdown">
+                    <button type="button" id="processDropdownButton" onclick="toggleDropdown()">Select Processes</button>
+                    <div id="processDropdownMenu" class="dropdown-menu">
+                    
+                    </div>
+                </div>
+                -->
+
+
+
+             <!--
                 <label for="process">Process:</label>
                 <input type="text" id="process" name="process" placeholder="Process">
 
                 <label for="process">Process:</label>
                 <input type="text" id="process" name="process" placeholder="Process">
+             -->
 
 
                 <!--
