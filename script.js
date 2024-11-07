@@ -1,38 +1,84 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
-    loadDropdownOptions();
-    loadDataTable();
+    loadDropdownOptions(); // Populate Process dropdown
+    loadFabOptions(); // Populate Fab dropdown
+    loadDataTable(); // Load sample data into the table
 });
 
-// Dropdown toggle
-function toggleDropdown() {
-    const dropdownMenu = document.getElementById("processDropdownMenu");
-    dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+// Function to toggle the visibility of dropdown menus
+function toggleDropdown(menuId) {
+    const dropdownMenu = document.getElementById(menuId);
+    if (dropdownMenu) {
+        const isOpen = dropdownMenu.classList.contains("show");
+        // Close all dropdowns before toggling the selected one
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => menu.classList.remove("show"));
+        if (!isOpen) {
+            dropdownMenu.classList.add("show");
+        }
+    }
 }
 
-// Populate dropdown
+// Function to populate Process dropdown (multi-select with checkboxes)
 function loadDropdownOptions() {
     const dropdownMenu = document.getElementById("processDropdownMenu");
-    const processes = ["1272", "1273", "1274", "1275"]; // Example processes
+    const processes = ["1272", "1273", "1274", "1275"]; // Example process options
 
     processes.forEach((process) => {
         const option = document.createElement("label");
-        option.innerHTML = `<input type="checkbox" value="${process}"> ${process}`;
+        option.className = "dropdown-option"; // Add a class for styling
+        option.innerHTML = `
+            <input type="checkbox" value="${process}" /> ${process}
+        `;
         dropdownMenu.appendChild(option);
     });
 }
 
-// Apply selected filters
+// Function to populate Fab dropdown (single-select)
+function loadFabOptions() {
+    const dropdownMenu = document.getElementById("fabDropdownMenu");
+    const fabs = ["F42", "F44", "F46", "F48"]; // Example Fab options
+
+    fabs.forEach((fab) => {
+        const option = document.createElement("div");
+        option.className = "dropdown-option"; // Add a class for styling
+        option.textContent = fab;
+        option.onclick = () => selectFab(fab); // Handle Fab selection
+        dropdownMenu.appendChild(option);
+    });
+}
+
+// Function to handle Fab selection
+function selectFab(selectedFab) {
+    const fabDropdownButton = document.getElementById("fabDropdownButton");
+    fabDropdownButton.textContent = selectedFab; // Update button text
+    toggleDropdown("fabDropdownMenu"); // Close dropdown
+}
+
+// Function to apply selected filters
 function applyFilters() {
+    // Get selected Processes (multi-select)
     const selectedProcesses = Array.from(
         document.querySelectorAll("#processDropdownMenu input[type='checkbox']:checked")
     ).map((checkbox) => checkbox.value);
 
-    alert(`Selected Processes: ${selectedProcesses.join(", ")}`);
+    // Get selected Fab (single-select)
+    const fabDropdownButton = document.getElementById("fabDropdownButton");
+    const selectedFab = fabDropdownButton.textContent !== "Select Fab" ? fabDropdownButton.textContent : null;
+
+    alert(`Selected Processes: ${selectedProcesses.join(", ")}\nSelected Fab: ${selectedFab}`);
 }
 
-// Load data table
+// Ensure dropdowns close when clicking outside
+window.onclick = function (event) {
+    if (
+        !event.target.closest("#processDropdownContainer") &&
+        !event.target.closest("#fabDropdownContainer") &&
+        !event.target.matches(".dropdown button")
+    ) {
+        document.querySelectorAll(".dropdown-menu").forEach((menu) => menu.classList.remove("show"));
+    }
+};
+
+// Function to populate sample data into the table
 function loadDataTable() {
     const tableData = document.getElementById("tableData");
 
