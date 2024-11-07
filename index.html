@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPACT MA Analytics - Simplified</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>IMPACT MA Analytics</h1>
+        <nav>
+            <ul>
+                <li><button onclick="showPopup('Process-Time')">Process-Time</button></li>
+                <li><button onclick="showPopup('EFL')">EFL</button></li>
+                <li><button onclick="showPopup('Run-rate')">Run-rate</button></li>
+                <li><button onclick="showPopup('Huddle')">Huddle</button></li>
+                <li><button onclick="showPopup('Community-Reports')">Community-Reports</button></li>
+                <li><button onclick="showPopup('OEE')">OEE</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Filters</h2>
+            <form>
+                <label for="fab">Process</label>
+                <input type="text" id="fab" name="fab" placeholder="Fab">
+
+
+                <!-- Multi-Select Dropdown for Process -->
+                <label for="processDropdown">Process:</label>
+                <div id="processDropdownContainer" class="dropdown">
+                    <button type="button" id="processDropdownButton" onclick="toggleDropdown()">Select Processes</button>
+                    <div id="processDropdownMenu" class="dropdown-menu">
+                     <!-- Options will be dynamically populated by JavaScript -->
+                    </div>
+                </div>
+
+                <label for="process">Process:</label>
+                <input type="text" id="process" name="process" placeholder="Process">
+
+                <label for="process">Process:</label>
+                <input type="text" id="process" name="process" placeholder="Process">
+
+
+                <!--
+                <label for="fist">FIST:</label>
+                <select id="number" name="fist">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                -->
+
+
+
+                <button type="button" onclick="applyFilters()">Apply Filters</button>
+            </form>
+        </aside>
+
+        <!-- Data Table -->
+        <section class="data-table">
+            <h2>Data Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Segment</th>
+                        <th>CEID</th>
+                        <th>Avail/Req</th>
+                        <th>Inv-Stg</th>
+                        <th>WSE</th>
+                        <th>User Input</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tableData">
+                    <!-- Data rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3 id="popupTitle"></h3>
+            <p>Additional content and functionality can go here.</p>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
